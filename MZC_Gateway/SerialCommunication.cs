@@ -29,6 +29,11 @@ namespace MZC_Gateway
             sp.Parity = Parity.None;
             sp.StopBits = StopBits.One;
 
+            //var availablePorts = SerialPort.GetPortNames();
+            //foreach (var port in availablePorts)
+            //{
+            //    Console.WriteLine(port);
+            //}
             //sp.ReadTimeout = 1000;
             //sp.WriteTimeout = 1000;
             sp.Open();
