@@ -16,7 +16,7 @@ namespace MZC_Gateway
             var ports = SerialPort.GetPortNames();
             foreach (var port in ports)
             {
-                Console.WriteLine($"Found Serial Port: {port}");
+                Console.WriteLine($"Debug: Found Serial Port: {port}");
             }
 
             Console.WriteLine($"Initialising Serial port {portName}");
