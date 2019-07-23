@@ -29,6 +29,7 @@ namespace MZC_Gateway
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        [Obsolete]
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -38,12 +39,21 @@ namespace MZC_Gateway
 
             SerialCommunication.Initialize(Configuration.GetSection("SerialConnection").GetValue<string>("Port"));
 
-            app.UseRouting(routes =>
-            {
-                routes.MapApplication();
-            });
+            // https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-2.2&tabs=visual-studio
+            app.UseRouting();
+                       
+            //app.UseRouting(routes =>
+            //{
+            //    routes.MapApplication();
+            //});
 
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+                // endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
