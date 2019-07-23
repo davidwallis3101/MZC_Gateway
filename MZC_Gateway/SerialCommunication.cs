@@ -13,6 +13,12 @@ namespace MZC_Gateway
 
         public static void Initialize(string portName)
         {
+            var ports = SerialPort.GetPortNames();
+            foreach (var port in ports)
+            {
+                Console.WriteLine($"Found Serial Port: {port}");
+            }
+
             Console.WriteLine($"Initialising Serial port {portName}");
             sp = new SerialPort(portName);
             sp.Encoding = Encoding.UTF8;
