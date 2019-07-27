@@ -11,9 +11,9 @@ namespace MZC_Gateway.Controllers
         [HttpGet("{zone}")]
         public ActionResult<string> Get(int zone)
         {
-            if (!SerialCommunication.SendOnCommand(zone)) { return "Error"; };
+            if (! SerialCommunication.SendOnCommand(zone - 1)) { return "Error sending on command"; };
 
-            if (!SerialCommunication.SendSelectSourceCommand(zone, zone)) { return "Error"; };
+            if (! SerialCommunication.SendSelectSourceCommand(zone - 1, zone - 1)) { return "Error sending select source command"; };
             
             return $"OK";
         }

@@ -13,11 +13,11 @@ namespace MZC_Gateway
 
         public static void Initialize(string portName)
         {
-            var ports = SerialPort.GetPortNames();
-            foreach (var port in ports)
-            {
-                Console.WriteLine($"Debug: Found Serial Port: {port}");
-            }
+            //var ports = SerialPort.GetPortNames();
+            //foreach (var port in ports)
+            //{
+            //    Console.WriteLine($"Debug: Found Serial Port: {port}");
+            //}
 
             Console.WriteLine($"Initialising Serial port {portName}");
             sp = new SerialPort(portName);
@@ -29,13 +29,6 @@ namespace MZC_Gateway
             sp.Parity = Parity.None;
             sp.StopBits = StopBits.One;
 
-            //var availablePorts = SerialPort.GetPortNames();
-            //foreach (var port in availablePorts)
-            //{
-            //    Console.WriteLine(port);
-            //}
-            //sp.ReadTimeout = 1000;
-            //sp.WriteTimeout = 1000;
             sp.Open();
         }
 
@@ -64,8 +57,8 @@ namespace MZC_Gateway
                 int length = sp.BytesToRead;
                 byte[] buf = new byte[length];
                 sp.Read(buf, 0, length);
-                Console.WriteLine($"Length {length} CommandLen: {command.Length}");
-                Console.WriteLine(BitConverter.ToString(buf));
+                //Console.WriteLine($"Length {length} CommandLen: {command.Length}");
+                //Console.WriteLine(BitConverter.ToString(buf));
                 if (length > 3)
                 {
                     if (buf[2] == 0x95 && buf[4] == 0x01)
@@ -73,11 +66,6 @@ namespace MZC_Gateway
                         Console.WriteLine("ACK resp");
                         return true;
                     }
-                    //else
-                    //{
-
-                    //    Console.WriteLine(BitConverter.ToString(buf));
-                    //}
                 }
             }
             return false;
