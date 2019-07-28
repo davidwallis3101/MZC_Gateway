@@ -20,14 +20,16 @@ namespace MZC_Gateway
             //}
 
             Console.WriteLine($"Initialising Serial port {portName}");
-            sp = new SerialPort(portName);
-            sp.Encoding = Encoding.UTF8;
-            sp.BaudRate = 57600;
-            sp.Handshake = Handshake.XOnXOff;
+            sp = new SerialPort(portName)
+            {
+                Encoding = Encoding.UTF8,
+                BaudRate = 57600,
+                Handshake = Handshake.XOnXOff,
 
-            sp.DataBits = 8;
-            sp.Parity = Parity.None;
-            sp.StopBits = StopBits.One;
+                DataBits = 8,
+                Parity = Parity.None,
+                StopBits = StopBits.One
+            };
 
             sp.Open();
         }
@@ -48,11 +50,15 @@ namespace MZC_Gateway
 
         private static bool SendCommand(byte[] command)
         {
-            int retryCount = 10;
+            int retryCount = 15;
+            var sleepDuration = 250;
+
             for (int i = 0; i < retryCount; i++)
             {
                 Console.WriteLine($"Sending Command: {BitConverter.ToString(command)}");
-                System.Threading.Thread.Sleep(250);
+                
+            
+                System.Threading.Thread.Sleep(sleepDuration);
                 sp.Write(command, 0, command.Length);
                 int length = sp.BytesToRead;
                 byte[] buf = new byte[length];
@@ -63,10 +69,11 @@ namespace MZC_Gateway
                 {
                     if (buf[2] == 0x95 && buf[4] == 0x01)
                     {
-                        Console.WriteLine("ACK resp");
+                        Console.WriteLine("ACK response received");
                         return true;
                     }
                 }
+                sleepDuration += 50;
             }
             return false;
 
