@@ -50,12 +50,12 @@ namespace MZC_Gateway
 
         private static bool SendCommand(byte[] command)
         {
-            int retryCount = 15;
+            int retryCount = 20;
             var sleepDuration = 250;
 
             for (int i = 0; i < retryCount; i++)
             {
-                Console.WriteLine($"Sending Command: {BitConverter.ToString(command)}");
+                Console.WriteLine($"Sending Command [{i+1}/{retryCount}]: {BitConverter.ToString(command)}");
                 
             
                 System.Threading.Thread.Sleep(sleepDuration);
