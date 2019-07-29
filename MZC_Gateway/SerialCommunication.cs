@@ -63,8 +63,7 @@ namespace MZC_Gateway
                 int length = sp.BytesToRead;
                 byte[] buf = new byte[length];
                 sp.Read(buf, 0, length);
-                //Console.WriteLine($"Length {length} CommandLen: {command.Length}");
-                //Console.WriteLine(BitConverter.ToString(buf));
+                Console.WriteLine($"Response: {BitConverter.ToString(buf)} Response Length: {length}");
                 if (length > 3)
                 {
                     if (buf[2] == 0x95 && buf[4] == 0x01)
