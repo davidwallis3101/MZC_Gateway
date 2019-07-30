@@ -24,8 +24,8 @@ namespace MZC_Gateway
             {
                 Encoding = Encoding.UTF8,
                 BaudRate = 57600,
-                Handshake = Handshake.XOnXOff,
-
+                //Handshake = Handshake.XOnXOff, // try changing this!!
+                Handshake = Handshake.RequestToSendXOnXOff,
                 DataBits = 8,
                 Parity = Parity.None,
                 StopBits = StopBits.One
