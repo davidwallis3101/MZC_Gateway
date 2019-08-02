@@ -1,0 +1,4 @@
+<Playlist Version="1.0">
+  <Add Test="MZC_Gateway.Tests.UnitTest1.SendOnCommand_ShouldTurnTheAmpOn" />
+  <Add Test="MZC_Gateway.Tests.UnitTest1.SendOffCommand_ShouldTurnTheAmpOff" />
+</Playlist>

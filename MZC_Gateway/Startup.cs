@@ -37,7 +37,7 @@ namespace MZC_Gateway
                 app.UseDeveloperExceptionPage();
             }
 
-            SerialCommunication.Initialize(Configuration.GetSection("SerialConnection").GetValue<string>("Port"));
+            SpeakerCraftAmplifier.Initialize(Configuration.GetSection("SerialConnection").GetValue<string>("Port"));
 
             // https://docs.microsoft.com/en-us/aspnet/core/migration/22-to-30?view=aspnetcore-2.2&tabs=visual-studio
             app.UseRouting();

@@ -16,7 +16,7 @@ namespace MZC_Gateway.Controllers
         [HttpGet("{zone}")]
         public ActionResult<string> Get(int zone)
         {
-            if (!SerialCommunication.SendOffCommand(zone - 1)) { return "Error"; };
+            if (!SpeakerCraftAmplifier.SendOffCommand(zone - 1)) { return "Error"; };
 
             return $"OK";
         }
