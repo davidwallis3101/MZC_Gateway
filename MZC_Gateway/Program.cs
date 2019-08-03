@@ -28,6 +28,7 @@ namespace MZC_Gateway
                         logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
                         logging.AddConsole();
                         logging.AddDebug();
+                        // logging.AddEventSourceLogger();
                     });
                     webBuilder.UseUrls("http://*:5000");
                 });

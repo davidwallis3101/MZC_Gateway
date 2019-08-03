@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace MZC_Gateway.Controllers
 {
@@ -11,7 +6,6 @@ namespace MZC_Gateway.Controllers
     [ApiController]
     public class PowerOffController : ControllerBase
     {
-
         // GET api/poweron/1
         [HttpGet("{zone}")]
         public ActionResult<string> Get(int zone)
