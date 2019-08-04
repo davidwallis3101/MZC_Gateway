@@ -18,3 +18,8 @@ http://ipAddress:5000/api/poweroff/1
 there are also methods for: poweroff (power on also sets the source)
 
 Zone numbers start at 1, not 0 as per the amp's api - this was to make things neater in my logic within loxone, I may make this configurable for the start zone.
+
+# Connectivity
+
+Tested with CH340 and PL2303 on windows fine - these don't work with XON/XOFF flow control under linux, however the FTDI232RL chipset does.
+So in short only use an FTDI232RL based USB to DB9 Adapter to connect to the amplifier
